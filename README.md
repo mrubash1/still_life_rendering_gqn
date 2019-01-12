@@ -53,8 +53,8 @@ sudo pip3 install -U virtualenv  # system-wide install
 sudo virtualenv --system-site-packages -p python3 ./venv
 source ./venv/bin/activate
 sudo pip install --upgrade pip
-sudo pip install --upgrade tensorflow
-sudo pip install scikit-image
+sudo pip install --upgrade tensorflow-gpu
+sudo pip install scikit-image, typing
 ```
 
 ### Download DeepMind dataset
