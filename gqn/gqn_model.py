@@ -23,7 +23,7 @@ from .gqn_params import _GQNParams, _DEFAULTS
 from .gqn_utils import debug_canvas_image_mean
 
 
-def _linear_noise_annealing(gqn_params: _GQNParams) -> tf.Tensor:
+def _linear_noise_annealing(gqn_params=_GQNParams):
   """
   Defines the computational graph for the global sigma annealing scheme used in
   image sampling.
@@ -37,7 +37,7 @@ def _linear_noise_annealing(gqn_params: _GQNParams) -> tf.Tensor:
       sigma_f)
   return sigma_target
 
-def _linear_lr_annealing(gqn_params: _GQNParams) -> tf.Tensor:
+def _linear_lr_annealing(gqn_params=_GQNParams):
   """
   Defines the computational graph for the global learning rate annealing scheme
   used during optimization.

@@ -22,15 +22,53 @@ Train on deepmind/gqn-dataset to satisfaction. Then use these learned weights th
 # Dataset
 Photos and viewpoints collected by Brett Göhre. Novel dataset, fruit_stills_dataset.zip, is accompanied with data_iterator.py script to pair with viewpoint information.
 
-# Training on DeepMind dataset
-Visit deepmind/gqn-dataset for instructions of using gsutil cp to download dataset from google cloud storage.
+# Setup
+### CLOUD-TPU Instructions:
+Create a google compute engine instance that can have a cloud-tpu installed
+```
+gcloud compute instances create tpu-demo-vm \
+--machine-type=n1-standard-4 \
+--boot-disk-size=500GB \
+--image-project=ml-images \
+--image-family=tf-1-8 \
+--scopes=cloud-platform
+```
+Add the cloud-tpu
+```
+gcloud beta compute tpus create demo-tpu \
+--range=10.240.1.0/29 \
+--version=1.8 \
+--network=defaultc
+```
+ssh into the machine
+```
+gcloud compute ssh tpu-demo-vmc
+```
 
+### Download DeepMind dataset
+Clone and navigate to this repo
+```
+https://github.com/brettgohre/still_life_rendering_gqn
+cd still_life_rendering_gqn
+```
+Download the data via the gsutil command below. Visit [deepmind/gqn-dataset](https://github.com/deepmind/gqn-datasets) for details 
+```
+gsutil -m cp -R gs://gqn-dataset/rooms_ring_camera .
+```
+
+### Setup virtual environment
+
+
+# Training on DeepMind dataset
+```
 python3 train_gqn_draw.py --data_dir /vol --dataset rooms_ring_camera --model_dir gqn --debug
+```
 
 # Training on fruit stills dataset
 Replace gqn_tfr_provider.py with modified provider: __________
-
+```
 python3 train_gqn_draw.py --data_dir /vol --dataset rooms_ring_camera --model_dir gqn --debug
+```
 
 # How to use with your own dataset
 Crop photos to (64, 64, 3) and collect paired viewpoints (x, y, z, sin(yaw), cos(yaw), sin(pitch), cos(pitch))
@@ -42,12 +80,9 @@ Sharpens generated image. Some blur due to noise on viewpoint labels resulting i
 
 # Next domains
 Data efficient deep reinforcement learning
-
-Image classification with rotated objects
-
-Create large high resolution dataset with Blender / Unity
-
-Transfer learning to illustrated dataset
+- Image classification with rotated objects
+- Create large high resolution dataset with Blender / Unity
+- Transfer learning to illustrated dataset
 
 # Acknowledgement
 

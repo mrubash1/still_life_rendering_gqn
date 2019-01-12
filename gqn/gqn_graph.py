@@ -79,10 +79,13 @@ def _encode_context(encoder_fn, context_poses, context_frames, model_params):
 
 
 def gqn_draw(
-    query_pose: tf.Tensor, target_frame: tf.Tensor,
-    context_poses: tf.Tensor, context_frames: tf.Tensor,
-    model_params: _GQNParams, is_training: bool = True,
-    scope: str = "GQN"):
+    query_pose=tf.Tensor, 
+    target_frame=tf.Tensor,
+    context_poses=tf.Tensor, 
+    context_frames=tf.Tensor,
+    model_params=_GQNParams, 
+    is_training=True,
+    scope= "GQN"):
   """
   Defines the computational graph of the GQN model.
 
@@ -146,9 +149,11 @@ def gqn_draw(
 
 
 def gqn_vae(
-    query_pose: tf.Tensor,
-    context_poses: tf.Tensor, context_frames: tf.Tensor,
-    model_params: _GQNParams, scope: str = "GQN-VAE"):
+    query_pose=tf.Tensor,
+    context_poses=tf.Tensor, 
+    context_frames=tf.Tensor,
+    model_params=_GQNParams, 
+    scope="GQN-VAE"):
   """
   Defines the computational graph of the GQN-VAE baseline model.
 
