@@ -14,10 +14,10 @@ TfTensorList = List[tf.Tensor]
 
 
 def gqn_draw_elbo(
-    mu_target: tf.Tensor, sigma_target: tf.Tensor,
-    mu_q: TfTensorList, sigma_q: TfTensorList,
-    mu_pi: TfTensorList, sigma_pi: TfTensorList,
-    target_frame: tf.Tensor,
+    mu_target= tf.Tensor, sigma_target= tf.Tensor,
+    mu_q= TfTensorList, sigma_q= TfTensorList,
+    mu_pi= TfTensorList, sigma_pi= TfTensorList,
+    target_frame= tf.Tensor,
     scope='GQN_DRAW_ELBO'):
   """
   Defines the ELBO of the GQN graph.
@@ -72,9 +72,9 @@ def gqn_draw_elbo(
 
 
 def gqn_vae_elbo(
-    mu_target: tf.Tensor, sigma_target: tf.Tensor,
-    mu_q: tf.Tensor, sigma_q: tf.Tensor,
-    target_frame: tf.Tensor,
+    mu_target= tf.Tensor, sigma_target= tf.Tensor,
+    mu_q= tf.Tensor, sigma_q= tf.Tensor,
+    target_frame= tf.Tensor,
     scope='GQN_VAE_ELBO'):
   """
   Defines the ELBO of the GQN-VAE baseline graph.
