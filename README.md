@@ -45,6 +45,18 @@ ssh into the machine
 gcloud compute ssh tpu-demo-vmc
 ```
 
+### Setup virtual environment
+```
+sudo apt update
+sudo apt install python3-dev python3-pip
+sudo pip3 install -U virtualenv  # system-wide install
+sudo virtualenv --system-site-packages -p python3 ./venv
+source ./venv/bin/activate
+sudo pip install --upgrade pip
+sudo pip install --upgrade tensorflow
+sudo pip install scikit-image
+```
+
 ### Download DeepMind dataset
 Clone and navigate to this repo
 ```
@@ -56,7 +68,6 @@ Download the data via the gsutil command below. Visit [deepmind/gqn-dataset](htt
 gsutil -m cp -R gs://gqn-dataset/rooms_ring_camera .
 ```
 
-### Setup virtual environment
 
 
 # Training on DeepMind dataset

@@ -11,7 +11,9 @@ import tensorflow as tf
 from .gqn_utils import broadcast_pose
 
 
-def tower_encoder(frames: tf.Tensor, poses: tf.Tensor, scope="TowerEncoder"):
+def tower_encoder(frames=tf.Tensor, 
+                  poses=tf.Tensor, 
+                  scope="TowerEncoder"):
   """
   Feed-forward convolutional architecture.
   """
@@ -51,7 +53,9 @@ def tower_encoder(frames: tf.Tensor, poses: tf.Tensor, scope="TowerEncoder"):
     return net, endpoints
 
 
-def pool_encoder(frames: tf.Tensor, poses: tf.Tensor, scope="PoolEncoder"):
+def pool_encoder(frames=tf.Tensor,
+                 poses=tf.Tensor, 
+                 scope="PoolEncoder"):
   """
   Feed-forward convolutional architecture with terminal global pooling.
   """
